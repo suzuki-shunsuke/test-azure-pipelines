@@ -23,3 +23,17 @@ steps:
   displayName: ci-info -v
 - bash: echo $PATH
   displayName: Check $PATH
+
+- task: GoTool@0
+  inputs:
+    version: '1.20'
+  displayName: 'Use Go 1.20'
+
+- task: Go@0
+  displayName: 'go build'
+  inputs:
+    command: build
+    arguments: '-o "main"'
+
+- bash: ./main
+  displayName: Run main
