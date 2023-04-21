@@ -39,4 +39,4 @@ steps:
   displayName: Run main
 
 # - task: myPublisherId.myExtensionId.myContributionId.myTaskName@1 #format example
-- task: ShunsukeSuzuki.build-release-task.custom-build-release-task.hello@1 #working example
+- task: ShunsukeSuzuki.build-release-task.custom-build-release-task.hello@0 #working example
