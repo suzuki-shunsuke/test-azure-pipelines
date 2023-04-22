@@ -10,33 +10,33 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- bash: |
-    curl -sSfL -O https://raw.githubusercontent.com/aquaproj/aqua-installer/v2.1.1/aqua-installer
-    echo "c2af02bdd15da6794f9c98db40332c804224930212f553a805425441f8331665  aqua-installer" | sha256sum -c
-    chmod +x aqua-installer
-    ./aqua-installer
-    echo "##vso[task.setvariable variable=path;]${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
-  displayName: Install aqua
-- bash: aqua i -l
-  displayName: Install tools by aqua
-- bash: ci-info -v
-  displayName: ci-info -v
-- bash: echo $PATH
-  displayName: Check $PATH
-
-- task: GoTool@0
-  inputs:
-    version: '1.20'
-  displayName: 'Use Go 1.20'
-
-- task: Go@0
-  displayName: 'go build'
-  inputs:
-    command: build
-    arguments: '-o "main"'
-
-- bash: ./main
-  displayName: Run main
+# - bash: |
+#     curl -sSfL -O https://raw.githubusercontent.com/aquaproj/aqua-installer/v2.1.1/aqua-installer
+#     echo "c2af02bdd15da6794f9c98db40332c804224930212f553a805425441f8331665  aqua-installer" | sha256sum -c
+#     chmod +x aqua-installer
+#     ./aqua-installer
+#     echo "##vso[task.setvariable variable=path;]${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH"
+#   displayName: Install aqua
+# - bash: aqua i -l
+#   displayName: Install tools by aqua
+# - bash: ci-info -v
+#   displayName: ci-info -v
+# - bash: echo $PATH
+#   displayName: Check $PATH
+# 
+# - task: GoTool@0
+#   inputs:
+#     version: '1.20'
+#   displayName: 'Use Go 1.20'
+# 
+# - task: Go@0
+#   displayName: 'go build'
+#   inputs:
+#     command: build
+#     arguments: '-o "main"'
+# 
+# - bash: ./main
+#   displayName: Run main
 
 # - task: myPublisherId.myExtensionId.myContributionId.myTaskName@1 #format example
 - task: ShunsukeSuzuki.build-release-task.custom-build-release-task.hello@0 #working example
